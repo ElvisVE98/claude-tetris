@@ -302,6 +302,3 @@ document.addEventListener('keydown', e => {
 restartBtn.addEventListener('click', init);
 
 init();
-
-
-CLAUDE_CODE_OAUTH_TOKEN
