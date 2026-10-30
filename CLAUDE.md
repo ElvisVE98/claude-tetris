@@ -19,6 +19,7 @@ Toda la lógica vive en `game.js` (script clásico, `'use strict'`, estado globa
 - **Ciclo de vida de una pieza**: `spawn()` promueve `next` a `current` y detecta game over si colisiona al aparecer; `lockPiece()` = `merge()` → `clearLines()` → `spawn()`. Tanto el bucle (`loop`), el soft drop como el hard drop terminan en `lockPiece()`.
 - **Bucle**: `loop` con `requestAnimationFrame` acumula `dropAccum` contra `dropInterval`; `clearLines` recalcula nivel y `dropInterval` (`max(100, 1000 - (level-1)*90)`). Pausa y game over cancelan el frame con `cancelAnimationFrame(animId)`; reanudar y `init()` (también el botón Reiniciar) lo reprograman.
 - **Rotación**: `rotateCW` genera la matriz rotada y `tryRotate` prueba kicks horizontales `[0, -1, 1, -2, 2]` (no es SRS completo).
+- **Skins**: sección `// ---- Skins ----` en `game.js`. `SKINS = { retro, neon, pastel, pixel }`, cada una con `palette` (7 colores, índice 0 = `null`, alineada con `PIECES`) y `draw(...)`; `drawBlock` delega en `SKINS[currentSkin]`. Fondo y cuadrícula por CSS vía `[data-skin]` en `<html>` (Neon fuerza negro); `applySkin` repinta, guarda en `localStorage['skin']` y el `<select id="skin-select">` está en `.top-controls` junto a `#theme-toggle`. El script inline del `<head>` aplica la skin guardada sin parpadeo.
 - **Puntuación**: soft drop +1 por fila, hard drop +2 por celda, líneas según `LINE_SCORES` × nivel.
 
 ## CI / Triage de issues

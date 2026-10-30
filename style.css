@@ -205,9 +205,6 @@ kbd {
 
 /* ---- Toggle de tema ---- */
 #theme-toggle {
-  position: fixed;
-  top: 12px;
-  right: 12px;
   background: var(--canvas-bg);
   color: var(--text);
   border: 1px solid var(--border);
@@ -219,4 +216,41 @@ kbd {
 
 #theme-toggle:hover {
   border-color: var(--accent);
+}
+
+/* ---- Skins ---- */
+.top-controls {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+#skin-select {
+  background: var(--canvas-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+#skin-select:hover {
+  border-color: var(--accent);
+}
+
+/* Neon fuerza fondo negro en ambos temas */
+/* (solo los canvas; --canvas-bg se usa también en paneles y controles) */
+[data-skin="neon"] { --board-bg: #000000; --grid: #1c1c30; }
+[data-skin="pastel"] { --board-bg: #2a2538; --grid: #38324a; }
+[data-skin="pastel"][data-theme="light"] { --board-bg: #f6f0fb; --grid: #e6dcf0; }
+[data-skin="pixel"] { --board-bg: #101018; --grid: #1c1c28; }
+[data-skin="pixel"][data-theme="light"] { --board-bg: #e9eaf0; --grid: #d3d5e0; }
+
+[data-skin] #board,
+[data-skin] #next-canvas {
+  background: var(--board-bg, var(--canvas-bg));
 }
