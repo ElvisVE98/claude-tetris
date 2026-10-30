@@ -19,6 +19,7 @@ Toda la lógica vive en `game.js` (script clásico, `'use strict'`, estado globa
 - **Ciclo de vida de una pieza**: `spawn()` promueve `next` a `current` y detecta game over si colisiona al aparecer; `lockPiece()` = `merge()` → `clearLines()` → `spawn()`. Tanto el bucle (`loop`), el soft drop como el hard drop terminan en `lockPiece()`.
 - **Bucle**: `loop` con `requestAnimationFrame` acumula `dropAccum` contra `dropInterval`; `clearLines` recalcula nivel y `dropInterval` (`max(100, 1000 - (level-1)*90)`). Pausa y game over cancelan el frame con `cancelAnimationFrame(animId)`; reanudar y `init()` (también el botón Reiniciar) lo reprograman.
 - **Rotación**: `rotateCW` genera la matriz rotada y `tryRotate` prueba kicks horizontales `[0, -1, 1, -2, 2]` (no es SRS completo).
+- **Menú de pausa**: `#pause-menu` (independiente de `#overlay`, que solo sirve a game over) se abre con P/Escape vía `togglePause()` (sección `// ---- Menú de pausa ----` en `game.js`; ids acoplados: `resume-btn`, `pause-restart-btn`, `controls-btn`, `pause-controls`, `start-level-select`). Mientras está abierto el keydown no actúa sobre el juego; al reanudar `ignoredKeys` descarta teclas aún pulsadas hasta su keyup. El nivel inicial (1–10) vive en `localStorage['startLevel']`; `init()` lo guarda en `baseLevel` y `clearLines` calcula `level = baseLevel + floor(lines/10)`; `intervalForLevel()` da la velocidad.
 - **Puntuación**: soft drop +1 por fila, hard drop +2 por celda, líneas según `LINE_SCORES` × nivel.
 
 ## CI / Triage de issues
