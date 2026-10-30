@@ -86,6 +86,10 @@ Después abre `http://localhost:8000` en el navegador.
 | `Espacio` | Hard drop (caída instantánea)     |
 | `P`       | Pausar / reanudar                 |
 
+### Tabla de records
+
+El juego arranca desde una pantalla de inicio que muestra el top 5 de puntuaciones (guardado en `localStorage`), el mejor combo (racha de piezas seguidas que limpian líneas) y las líneas máximas. Al terminar la partida, si la puntuación entra en el top se pide un nombre (máx. 12 caracteres) y la fila nueva se resalta. El botón "Borrar records" vacía la tabla.
+
 ---
 
 ## Cómo funciona
