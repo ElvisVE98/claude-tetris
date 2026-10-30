@@ -9,10 +9,22 @@
     try {
       if (localStorage.getItem('theme') === 'light') document.documentElement.dataset.theme = 'light';
     } catch (e) {}
+    try {
+      var skin = localStorage.getItem('skin');
+      if (['retro', 'neon', 'pastel', 'pixel'].indexOf(skin) !== -1) document.documentElement.dataset.skin = skin;
+    } catch (e) {}
   </script>
 </head>
 <body>
-  <button id="theme-toggle" type="button" aria-pressed="false" aria-label="Cambiar a modo claro">☀ Modo claro</button>
+  <div class="top-controls">
+    <select id="skin-select" aria-label="Skin visual">
+      <option value="retro">Retro</option>
+      <option value="neon">Neon</option>
+      <option value="pastel">Pastel</option>
+      <option value="pixel">Pixel art</option>
+    </select>
+    <button id="theme-toggle" type="button" aria-pressed="false" aria-label="Cambiar a modo claro">☀ Modo claro</button>
+  </div>
 
   <h1 class="title">TETRIS</h1>
 
